@@ -36,10 +36,10 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupFields()
-        registerRegisterResultObserver()
+        observeRegisterResult()
     }
 
-    private fun registerRegisterResultObserver() {
+    private fun observeRegisterResult() {
         viewModel.registerResult.observe(viewLifecycleOwner) {
             when (it) {
                 is Result.Error -> {

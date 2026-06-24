@@ -43,13 +43,13 @@ class LoginFragment : Fragment() {
             viewModel.login(binding.emailTextField.text.toString(), binding.passwordTextField.text.toString())
         }
 
-        registerActiveSessionResultObserver()
-        registerLoginResultObserver()
+        observeActiveSessionResult()
+        observeLoginResult()
 
         viewModel.checkIfHasActiveSession()
     }
 
-    private fun registerActiveSessionResultObserver() {
+    private fun observeActiveSessionResult() {
         viewModel.activeSessionResult.observe(viewLifecycleOwner) {
             when (it) {
                 is Result.Success -> navigateToWeatherScreen()
@@ -58,7 +58,7 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun registerLoginResultObserver() {
+    private fun observeLoginResult() {
         viewModel.loginResult.observe(viewLifecycleOwner) {
             when (it) {
                 is Result.Error -> {
