@@ -18,9 +18,10 @@ class WeatherRepositoryImpl @Inject constructor(
         return weatherDao.getAllWeather().map { weatherEntities -> weatherEntities.map { it.toDomain() } }
     }
 
-    override suspend fun fetchCurrentWeather(lat: Double, lon: Double) {
+    override suspend fun fetchCurrentWeather(lat: Double, lon: Double): Weather {
         val currentWeather = weatherApi.getCurrentWeather(lat, lon).toDomain(System.currentTimeMillis())
         weatherDao.upsertWeather(currentWeather.toEntity())
+        return currentWeather
     }
 
 }

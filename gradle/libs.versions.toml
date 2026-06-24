@@ -17,6 +17,7 @@ material = "1.14.0"
 moshi = "1.15.2"
 navigation = "2.9.8"
 okhttpLogging = "5.4.0"
+playServicesLocation = "21.3.0"
 retrofit = "3.0.0"
 room = "2.8.4"
 viewPager2 = "1.1.0"
@@ -38,6 +39,7 @@ androidx-room-runtime = { group = "androidx.room", name = "room-runtime", versio
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 androidx-room-testing = { group = "androidx.room", name = "room-testing", version.ref = "room" }
 androidx-viewpager2 = { group = "androidx.viewpager2", name = "viewpager2", version.ref = "viewPager2"}
+google-play_services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation"}
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }

@@ -89,4 +89,6 @@ dependencies {
     implementation(libs.okhttp.logging)
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.moshi)
+
+    implementation(libs.google.play.services.location)
 }

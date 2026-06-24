@@ -1,11 +1,11 @@
 package com.yudzeen.gweatherexercise.ui.weather
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
@@ -52,10 +52,6 @@ class WeatherFragment : Fragment() {
         }.attach()
 
         observeLogoutResult()
-        observeFetchCurrentWeatherResult()
-
-        // hard-coded location for now due to time constraints
-        viewModel.fetchCurrentWeather(14.542375, 121.054789)
     }
 
     private fun observeLogoutResult() {
@@ -69,21 +65,6 @@ class WeatherFragment : Fragment() {
                 is Result.Success -> {
                     binding.loadingIndicator.visibility = View.GONE
                     findNavController().navigate(WeatherFragmentDirections.actionWeatherFragmentToLoginFragment())
-                }
-            }
-        }
-    }
-
-    private fun observeFetchCurrentWeatherResult() {
-        viewModel.fetchCurrentWeatherResult.observe(viewLifecycleOwner) {
-            when (it) {
-                is Result.Error -> {
-                    binding.loadingIndicator.visibility = View.GONE
-                    Toast.makeText(requireContext(), getString(R.string.fetch_current_weather_error), Toast.LENGTH_SHORT).show()
-                }
-                Result.Loading -> binding.loadingIndicator.visibility = View.VISIBLE
-                is Result.Success -> {
-                    binding.loadingIndicator.visibility = View.GONE
                 }
             }
         }

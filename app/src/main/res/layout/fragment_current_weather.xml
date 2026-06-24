@@ -7,6 +7,15 @@
 
     <include
         android:id="@+id/currentWeatherView"
+        android:visibility="gone"
         layout="@layout/view_weather" />
+
+    <com.google.android.material.loadingindicator.LoadingIndicator
+        android:id="@+id/loadingIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:backgroundTint="#22000000"
+        android:visibility="gone"/>
 
 </FrameLayout>
