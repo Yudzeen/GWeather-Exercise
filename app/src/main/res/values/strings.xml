@@ -12,4 +12,11 @@
     <string name="logout">Logout</string>
     <string name="logout_error">Logout Error</string>
     <string name="logout_successful">Logout Successful</string>
+    <string name="current">Current</string>
+    <string name="history">History</string>
+    <string name="fetch_current_weather_error">An error occurred while fetching current weather.</string>
+    <string name="city_country">%1$s, %2$s</string>
+    <string name="temp_in_c">%1$d°C</string>
+    <string name="sunrise_time">Sunrise: %1$s</string>
+    <string name="sunset_time">Sunset: %1$s</string>
 </resources>

@@ -3,6 +3,7 @@ package com.yudzeen.gweatherexercise.ui.auth.register
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -43,6 +44,7 @@ class RegisterFragment : Fragment() {
         viewModel.registerResult.observe(viewLifecycleOwner) {
             when (it) {
                 is Result.Error -> {
+                    Log.e("RegisterFragment", "observeRegisterResult error", it.exception)
                     binding.loadingIndicator.visibility = View.GONE
                     when(it.exception) {
                         is UserAlreadyExistsException -> binding.emailTextFieldContainer.error = it.exception.message

@@ -3,6 +3,7 @@ package com.yudzeen.gweatherexercise.di
 import android.content.Context
 import com.yudzeen.gweatherexercise.data.local.AppDatabase
 import com.yudzeen.gweatherexercise.data.local.dao.UserDao
+import com.yudzeen.gweatherexercise.data.local.dao.WeatherDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,5 +24,11 @@ object DatabaseModule {
     @Provides
     fun provideUserDao(appDatabase: AppDatabase): UserDao {
         return appDatabase.userDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideWeatherDao(appDatabase: AppDatabase): WeatherDao {
+        return appDatabase.weatherDao()
     }
 }

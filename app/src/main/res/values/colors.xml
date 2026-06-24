@@ -2,4 +2,27 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Monochrome gray -->
+    <color name="gray_scale_1">#FF000000</color>
+    <color name="gray_scale_2">#FF1C1C1C</color>
+    <color name="gray_scale_3">#FF383838</color>
+    <color name="gray_scale_4">#FF545454</color>
+    <color name="gray_scale_5">#FF717171</color>
+    <color name="gray_scale_6">#FF8D8D8D</color>
+    <color name="gray_scale_7">#FFA9A9A9</color>
+    <color name="gray_scale_8">#FFC5C5C5</color>
+    <color name="gray_scale_9">#FFE2E2E2</color>
+    <color name="gray_scale_10">#FFFFFFFF</color>
+
+    <!-- Monochrome blue -->
+    <color name="monochrome_blue_1">#FFDCE8F7</color>
+    <color name="monochrome_blue_2">#FF9BBDE8</color>
+    <color name="monochrome_blue_3">#FF4C88D3</color>
+    <color name="monochrome_blue_4">#FF0052B9</color>
+    <color name="monochrome_blue_5">#FF00459B</color>
+    <color name="monochrome_blue_6">#FF003579</color>
+    <color name="monochrome_blue_7">#FF002554</color>
+    <color name="monochrome_blue_8">#FF00122B</color>
+
 </resources>

@@ -19,6 +19,11 @@
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:launchSingleTop="true"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_weatherFragment"
+            app:destination="@id/weatherFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true"/>
 
     </fragment>
 
@@ -32,6 +37,18 @@
             app:destination="@id/loginFragment"
             app:launchSingleTop="true"
             app:popUpTo="@id/registerFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.yudzeen.gweatherexercise.ui.weather.WeatherFragment"
+        android:label="fragment_weather"
+        tools:layout="@layout/fragment_weather" >
+        <action
+            android:id="@+id/action_weatherFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/weatherFragment"
             app:popUpToInclusive="true"/>
     </fragment>
 

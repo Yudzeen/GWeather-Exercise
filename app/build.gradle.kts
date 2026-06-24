@@ -1,13 +1,20 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
     alias(libs.plugins.navigation.safeargs.kotlin)
+    alias(libs.plugins.room)
 }
 
 android {
     namespace = "com.yudzeen.gweatherexercise"
     compileSdk = 37
+
+    val properties = Properties().apply {
+        load(rootProject.file("dev.properties").reader())
+    }
 
     defaultConfig {
         applicationId = "com.yudzeen.gweatherexercise"
@@ -17,6 +24,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "OPEN_WEATHER_API_KEY", "\"${properties["OPEN_WEATHER_API_KEY"]}\"")
     }
 
     buildTypes {
@@ -33,9 +42,12 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     buildFeatures {
+        buildConfig = true
         dataBinding = true
         viewBinding = true
     }
+
+    room.schemaDirectory("$projectDir/schemas")
 }
 
 dependencies {
@@ -46,6 +58,7 @@ dependencies {
     implementation(libs.androidx.datastore)
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.viewpager2)
     implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -64,4 +77,16 @@ dependencies {
     api(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     androidTestImplementation(libs.androidx.room.testing)
+
+    // Glide
+    implementation(libs.glide)
+
+    implementation(libs.kotlinx.serialization.json)
+
+    ksp(libs.moshi.kotlin.codegen)
+    implementation(libs.moshi.kotlin)
+
+    implementation(libs.okhttp.logging)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.moshi)
 }

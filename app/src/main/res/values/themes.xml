@@ -3,6 +3,11 @@
     <style name="Base.Theme.GWeatherExercise" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <item name="colorPrimary">@color/monochrome_blue_4</item>
+        <item name="colorPrimaryDark">@color/monochrome_blue_8</item>
+        <item name="colorAccent">@color/monochrome_blue_2</item>
+        <item name="colorSurface">@color/monochrome_blue_1</item>
     </style>
 
     <style name="Theme.GWeatherExercise" parent="Base.Theme.GWeatherExercise" />

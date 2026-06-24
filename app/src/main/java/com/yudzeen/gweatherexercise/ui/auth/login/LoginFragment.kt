@@ -5,12 +5,14 @@ import android.text.SpannableString
 import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.yudzeen.gweatherexercise.R
@@ -62,6 +64,7 @@ class LoginFragment : Fragment() {
         viewModel.loginResult.observe(viewLifecycleOwner) {
             when (it) {
                 is Result.Error -> {
+                    Log.e("LoginFragment", "observeLoginResult error", it.exception)
                     binding.loadingIndicator.visibility = View.GONE
                     Snackbar.make(binding.root, "Login Error.", Snackbar.LENGTH_LONG).show()
                 }
@@ -77,7 +80,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun navigateToWeatherScreen() {
-        // TODO: Should be unable to back after login
+        findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWeatherFragment())
     }
 
     private fun setupSignUp() {
