@@ -5,14 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yudzeen.gweatherexercise.common.Result
+import com.yudzeen.gweatherexercise.di.IoDispatcher
 import com.yudzeen.gweatherexercise.domain.auth.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject internal constructor(
-    private val authRepository: AuthRepository
+    private val authRepository: AuthRepository,
+    @param:IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private val _loginResult = MutableLiveData<Result<Unit>>()
@@ -22,22 +25,22 @@ class LoginViewModel @Inject internal constructor(
     val activeSessionResult: LiveData<Result<Unit>> = _activeSessionResult
 
     fun checkIfHasActiveSession() {
-        viewModelScope.launch {
+        viewModelScope.launch(ioDispatcher) {
             val isLoggedIn = authRepository.isLoggedIn()
             if (isLoggedIn) {
-                _activeSessionResult.value = Result.Success(Unit)
+                _activeSessionResult.postValue(Result.Success(Unit))
             }
         }
     }
 
     fun login(email: String, password: String) {
-        viewModelScope.launch {
-            _loginResult.value = Result.Loading
+        viewModelScope.launch(ioDispatcher) {
+            _loginResult.postValue(Result.Loading)
             try {
                 authRepository.login(email, password)
-                _loginResult.value = Result.Success(Unit)
+                _loginResult.postValue(Result.Success(Unit))
             } catch (e: Exception) {
-                _loginResult.value = Result.Error(e)
+                _loginResult.postValue(Result.Error(e))
             }
         }
     }

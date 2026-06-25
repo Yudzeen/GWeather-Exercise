@@ -5,17 +5,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yudzeen.gweatherexercise.common.Result
+import com.yudzeen.gweatherexercise.di.IoDispatcher
 import com.yudzeen.gweatherexercise.domain.auth.AuthRepository
 import com.yudzeen.gweatherexercise.repository.auth.InvalidConfirmPasswordException
 import com.yudzeen.gweatherexercise.repository.auth.InvalidEmailException
 import com.yudzeen.gweatherexercise.repository.auth.InvalidPasswordException
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class RegisterViewModel @Inject internal constructor(
-    private val authRepository: AuthRepository
+    private val authRepository: AuthRepository,
+    @param:IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private val _registerResult = MutableLiveData<Result<String>>()
@@ -28,13 +31,13 @@ class RegisterViewModel @Inject internal constructor(
 
         if (!isValidEmail || !isValidPassword || !isValidConfirmPassword) { return }
 
-        viewModelScope.launch {
-            _registerResult.value = Result.Loading
+        viewModelScope.launch(ioDispatcher) {
+            _registerResult.postValue(Result.Loading)
             try {
                 authRepository.register(email, password)
-                _registerResult.value = Result.Success(email)
+                _registerResult.postValue(Result.Success(email))
             } catch (e: Exception) {
-                _registerResult.value = Result.Error(e)
+                _registerResult.postValue(Result.Error(e))
             }
         }
     }

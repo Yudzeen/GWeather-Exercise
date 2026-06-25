@@ -2,9 +2,12 @@
 activityKtx = "1.13.0"
 agp = "9.2.1"
 appcompat = "1.7.1"
+arch = "2.2.0"
 atslJunit = "1.3.0"
 constraintlayout = "2.2.1"
 coreKtx = "1.19.0"
+coreTest = "1.7.0"
+coroutinesTest = "1.11.0"
 datastore = "1.2.1"
 espressoCore = "3.7.0"
 fragmentKtx = "1.8.9"
@@ -14,6 +17,7 @@ junit = "4.13.2"
 kotlinxSerializationJson = "1.11.0"
 ksp = "2.3.4"
 material = "1.14.0"
+mockk = "1.14.11"
 moshi = "1.15.2"
 navigation = "2.9.8"
 okhttpLogging = "5.4.0"
@@ -25,6 +29,7 @@ viewPager2 = "1.1.0"
 [libraries]
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-arch-core-testing = { group = "androidx.arch.core", name = "core-testing", version.ref = "arch" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-datastore = { group = "androidx.datastore", name = "datastore", version.ref = "datastore" }
@@ -38,7 +43,9 @@ androidx-room-compiler = { group = "androidx.room", name = "room-compiler", vers
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 androidx-room-testing = { group = "androidx.room", name = "room-testing", version.ref = "room" }
+androidx-test-core = { group = "androidx.test", name = "core", version.ref = "coreTest" }
 androidx-viewpager2 = { group = "androidx.viewpager2", name = "viewpager2", version.ref = "viewPager2"}
+coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutinesTest" }
 google-play_services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation"}
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
@@ -46,6 +53,9 @@ hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", v
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+mockk-agent = { group = "io.mockk", name = "mockk-agent", version.ref = "mockk" }
+mockk-android = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
 moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi" }
 moshi-kotlin-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "moshi" }
 okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttpLogging"}

@@ -91,4 +91,13 @@ dependencies {
     implementation(libs.retrofit.converter.moshi)
 
     implementation(libs.google.play.services.location)
+
+    // MockK
+    testImplementation(libs.mockk)
+    testImplementation(libs.mockk.agent)
+    testImplementation(libs.mockk.android)
+
+    testImplementation(libs.coroutines.test)
+    testImplementation(libs.androidx.arch.core.testing)
+    testImplementation(libs.androidx.test.core)
 }
